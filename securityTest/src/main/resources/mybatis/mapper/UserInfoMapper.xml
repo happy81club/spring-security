@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.security.mapper.UserInfoMapper">
+	
+	<insert id="insertUserInfo" parameterType="com.test.security.dto.UserInfo">
+		insert
+			into
+			soon.user_info (
+			user_id,
+			user_name,
+			password,
+			`role`,
+			enabled)
+			values(
+			#{userId},
+			#{userName},
+			#{password},
+			'ROLE_USER',
+			0)
+	</insert>
+	
+	<select id="getUserByUserInfo" parameterType="String" resultType="com.test.security.dto.UserInfo">
+		select
+			user_id,
+			user_name,
+			password,
+			`role`,
+			enabled
+		from
+			soon.user_info
+		where
+			   user_id  = #{userId}
+	</select>
+
+</mapper>
