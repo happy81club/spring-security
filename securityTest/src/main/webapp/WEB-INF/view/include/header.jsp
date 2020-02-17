@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +30,11 @@
 		      <a class="navbar-brand" href="#">Brand</a>
 		    </div>
 		     <div class="navbar-inverse">
-		      <a class="navbar-brand" href="#"><c:out value="${loginUser.userId}"/></a>
+		      <a class="navbar-brand" href="#"><c:out value="${loginVO.userId}"/></a>
 		    </div>
 			  <c:choose>
-				  <c:when test="${loginUser.userId == null }"><a class="navbar-brand" href="/login">로그인</a></c:when>
-				  <c:otherwise><c:out value="${loginUser.userName}"/>님 로그인하였습니다.</c:otherwise>
+				  <c:when test="${loginVO.userId == null }"><a class="navbar-brand" href="/login">로그인</a></c:when>
+				  <c:otherwise><c:out value="${loginVO.userName}"/>님 로그인하였습니다.</c:otherwise>
 		  	  </c:choose>
 	    </div>
 	</header>

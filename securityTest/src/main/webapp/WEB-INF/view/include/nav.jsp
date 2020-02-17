@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <nav class="navbar navbar-inverse">
 	<div class="list-group">
 	  <c:choose>
-		  <c:when test="${loginUser.userId == null }">
+		  <c:when test="${loginVO.userId == null }">
 			  <a href="<c:url value='/login'/>" class="list-group-item">로그인</a>
 			  <a href="<c:url value='/member/join'/>" class="list-group-item">회원가입</a>
 		  </c:when>
@@ -29,12 +30,13 @@
 		<a href="<c:url value='/user/main'/>" class="list-group-item">main</a>
 	</div>
 
-	<!-- 로그인이 필요한 폴더 -->
-	<div class="list-group">
-	  	<a href="<c:url value='/admin/main'/>" class="list-group-item active dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMIN</a> <!-- active disabled  -->
-		<a href="<c:url value='/admin/main'/>" class="list-group-item">main</a>
-	</div>
-	
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	</sec:authorize>
+		<!-- 로그인이 필요한 폴더 -->
+		<div class="list-group">
+		  	<a href="<c:url value='/admin/main'/>" class="list-group-item active dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMIN</a> <!-- active disabled  -->
+			<a href="<c:url value='/admin/main'/>" class="list-group-item">main</a>
+		</div>
 	
 </nav>
 

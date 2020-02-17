@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.test.security.handler.LoginSuccessHandler;
 import com.test.security.service.CustomUserDetailsService;
 
 @Configuration 
@@ -35,13 +37,21 @@ public class SecuirtyConfig extends WebSecurityConfigurerAdapter {
 				.formLogin()
 				.loginPage("/login").permitAll()
 				.loginProcessingUrl("/loginProcess")
+				.successHandler(authenticationSuccessHandler())
 				.usernameParameter("userId")
 				.passwordParameter("password")
-				.defaultSuccessUrl("/user/loginProc") 				
+				.defaultSuccessUrl("/user/loginProc") 
 				.and()
 				.logout() /* 로그아웃 */
 				.logoutUrl("/logout").permitAll()
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
 				.logoutSuccessUrl("/login");  /* 로그아웃 성공시 이동 URL */
+	}
+	
+	@Bean
+	AuthenticationSuccessHandler authenticationSuccessHandler() {
+		return new LoginSuccessHandler();
 	}
 	
 

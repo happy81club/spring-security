@@ -25,10 +25,7 @@
 	<header>header</header>
 	<nav>nav</nav>
 	<section>
-		<p>이렇게
-		<span style="border: 3px solid red">span요소로 텍스트의 일부분</span>
-		만을 따로 묶은 후에 스타일을 적용할 수 있습니다만을 따로 묶은 후에 스타일을 적용할 수 있습니다.만을 따로 묶은 후에 스타일을 적용할 수 있습니다.만을 따로 묶은 후에 스타일을 적용할 수 있습니다..</p>
-
+		<c:out value="${msgCode}"/>
 	</section>
 	<footer>footer</footer>
     

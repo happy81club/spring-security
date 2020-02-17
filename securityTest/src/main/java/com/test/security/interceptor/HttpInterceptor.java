@@ -8,9 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.test.security.dto.Role;
+import com.test.security.dto.UserInfo;
 
 @Component
 public class HttpInterceptor extends HandlerInterceptorAdapter implements SessionNames{
@@ -76,6 +79,24 @@ public class HttpInterceptor extends HandlerInterceptorAdapter implements Sessio
 			loginCookie.setMaxAge(7 * 24 * 60 * 60);
 			
 			response.addCookie(loginCookie);
+		}
+		
+		logger.info("modelAndView.getView() >>>" + modelAndView.getView());
+		logger.info("modelAndView.getViewName() >>>" + modelAndView.getViewName());
+		
+		
+		// 권한체크
+		if(null != session.getAttribute(LOGIN)) {
+			UserInfo loginVO = (UserInfo)session.getAttribute(LOGIN);
+			
+			// 관리자
+			if(modelAndView.getViewName().indexOf("/admin/") > -1 && Role.ROLE_ADMIN != loginVO.getRole()) {
+                ModelAndView mav = new ModelAndView("redirect:/main");
+                mav.addObject("msgCode", "권한이 없습니다.");
+                //mav.addObject("returnUrl", "/index.do");
+                throw new ModelAndViewDefiningException(mav);
+			}
+			
 		}
 		
 		/*
