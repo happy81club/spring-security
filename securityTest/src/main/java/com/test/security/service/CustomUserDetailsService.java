@@ -26,10 +26,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		UserInfo user = userService.getUserByUsername(userId);
 		
-		logger.info("******************************** :: " + user.getPassword());
+		//logger.info("******************************** :: " + user.getPassword());
 		
 		if (user == null){
-			System.out.println(userId + " 유저를 찾을 수 없습니다. ");
+			logger.info(userId + " 유저를 찾을 수 없습니다. ");
 			throw new UsernameNotFoundException("유저를 찾을 수 없습니다.");
 		} 
 		

@@ -33,18 +33,15 @@ public class SecuirtyConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/super/**").access("hasRole('ROLE_SUPER')")
 				.and()
 				.formLogin()
-				.loginPage("/login")
+				.loginPage("/login").permitAll()
 				.loginProcessingUrl("/loginProcess")
 				.usernameParameter("userId")
 				.passwordParameter("password")
-				.defaultSuccessUrl("/loginProc")  
-				.permitAll()
+				.defaultSuccessUrl("/user/loginProc") 				
 				.and()
 				.logout() /* 로그아웃 */
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login")  /* 로그아웃 성공시 이동 URL */
-				.permitAll()
-				.logoutSuccessUrl("/");
+				.logoutUrl("/logout").permitAll()
+				.logoutSuccessUrl("/login");  /* 로그아웃 성공시 이동 URL */
 	}
 	
 

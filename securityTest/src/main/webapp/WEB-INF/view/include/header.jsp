@@ -22,4 +22,19 @@
 
 <div id="wrapper">
 
-	<header></header>
+	<header>
+		<div class="container-fluid">
+		     <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Brand</a>
+		    </div>
+		     <div class="navbar-inverse">
+		      <a class="navbar-brand" href="#"><c:out value="${loginUser.userId}"/></a>
+		    </div>
+			  <c:choose>
+				  <c:when test="${loginUser.userId == null }"><a class="navbar-brand" href="/login">로그인</a></c:when>
+				  <c:otherwise><c:out value="${loginUser.userName}"/>님 로그인하였습니다.</c:otherwise>
+		  	  </c:choose>
+	    </div>
+	</header>
+<script type="text/javascript" src="/js/bootstrap.js"></script>	
+	

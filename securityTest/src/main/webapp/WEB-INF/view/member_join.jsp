@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 
-<%@include file="/WEB-INF/jsp/include/header.jsp" %>
-<%@include file="/WEB-INF/jsp/include/nav.jsp" %>
+<%@include file="/WEB-INF/view/include/header.jsp" %>
+<%@include file="/WEB-INF/view/include/nav.jsp" %>
 	
 <section>
 
@@ -45,4 +45,4 @@
 	});
 </script>
 
-<%@ include file="/WEB-INF/jsp/include/footer.jsp" %>
+<%@ include file="/WEB-INF/view/include/footer.jsp" %>
