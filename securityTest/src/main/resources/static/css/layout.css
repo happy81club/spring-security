@@ -36,6 +36,32 @@ body {
 		height:100px;
 		clear:both;
 	}
-	header, nav, section, footer { text-align:center; }
+	header, nav, footer { text-align:center; }
 	header, footer { line-height:100px; }
 	nav, section { line-height:20px; }
+	
+	
+.middle{
+  margin-top: 20px;
+  width: 1000px;
+  height: 500px;
+  position: relative;
+}
+.middle-left{
+  outline: 0px solid #9F9F9F;
+  position: absolute;
+  top: 0px;
+  width: 600px;
+  height:500px;
+  margin: 5px 5px 5px 5px;
+  /* background-color: #00D8FF; */
+}
+.middle-right{
+  outline: 1px solid #9F9F9F;
+  position: absolute;
+  top: 5px;
+  left: 620px;
+  width: 380px;
+  height: 500px;
+  margin: 5px 5px 5px 5px;
+}

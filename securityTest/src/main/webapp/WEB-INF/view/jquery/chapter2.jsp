@@ -6,6 +6,8 @@
 <section>
 	<h1>chapter2</h1>
 
+	</div>
+
 </section>
 
 <script type="text/javascript" src="/js/bootstrap.js"></script>	

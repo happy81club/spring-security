@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="<c:url value="/css/layout.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/fromStyle.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>">
+<link rel="stylesheet" href="<c:url value="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>">
 <!-- 
 <link rel="stylesheet" href="<c:url value="/css/boardStyle.css"/>">
  -->
