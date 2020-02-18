@@ -25,18 +25,21 @@
 	</div>
 	
 	<!-- 로그인이 필요한 폴더 -->
+	<%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
+	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER')">
 	<div class="list-group">
 	  	<a href="<c:url value='/user/main'/>" class="list-group-item active dropdown-toggle" data-toggle="dropdown" aria-expanded="false">USER</a> <!-- active disabled  -->
 		<a href="<c:url value='/user/main'/>" class="list-group-item">main</a>
 	</div>
-
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
 	</sec:authorize>
+
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER')">
 		<!-- 로그인이 필요한 폴더 -->
 		<div class="list-group">
 		  	<a href="<c:url value='/admin/main'/>" class="list-group-item active dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMIN</a> <!-- active disabled  -->
 			<a href="<c:url value='/admin/main'/>" class="list-group-item">main</a>
 		</div>
+	</sec:authorize>
 	
 </nav>
 

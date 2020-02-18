@@ -1,7 +1,5 @@
 package com.test.security.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,21 +7,16 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.util.WebUtils;
 
-import com.test.security.dto.UserInfo;
 import com.test.security.interceptor.SessionNames;
-import com.test.security.service.UserInfoService;
-
 
 @Controller
 public class LoginController {
@@ -33,13 +26,32 @@ public class LoginController {
 
 	
 	@RequestMapping(value="/")
-	public String home(Principal principal, Model model) {
+	public String home(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
 		
-		return "login";
+		
+		if(session.getAttribute("loginVO") != null) {
+			return "redirect:/user/main";
+		}
+		
+		return "redirect:/login";
 	}
    
 	@RequestMapping(value="/login")
-	public String login(Model model, HttpServletRequest req) {
+	public String login(HttpServletRequest request, Model model) {
+
+		HttpSession session = request.getSession();
+		
+		SecurityContextHolder.clearContext();
+		if(session != null)
+			session.invalidate();
+
+/*
+		if(session.getAttribute("loginVO") != null) {
+			return "redirect:/logout";
+		}
+*/		
+		
 		
 		return "login";
 	}

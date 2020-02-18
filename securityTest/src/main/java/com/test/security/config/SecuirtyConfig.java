@@ -35,23 +35,25 @@ public class SecuirtyConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/super/**").access("hasRole('ROLE_SUPER')")
 				.and()
 				.formLogin()
-				.loginPage("/login").permitAll()
+				.loginPage("/login")
 				.loginProcessingUrl("/loginProcess")
 				.successHandler(authenticationSuccessHandler())
 				.usernameParameter("userId")
 				.passwordParameter("password")
 				.defaultSuccessUrl("/user/loginProc") 
+				.permitAll()
 				.and()
 				.logout() /* 로그아웃 */
-				.logoutUrl("/logout").permitAll()
+				.logoutUrl("/logout")
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID")
-				.logoutSuccessUrl("/login");  /* 로그아웃 성공시 이동 URL */
+				.logoutSuccessUrl("/login")  /* 로그아웃 성공시 이동 URL */
+     			.permitAll();
 	}
 	
 	@Bean
 	AuthenticationSuccessHandler authenticationSuccessHandler() {
-		return new LoginSuccessHandler();
+		return new LoginSuccessHandler("/login");
 	}
 	
 

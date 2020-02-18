@@ -21,26 +21,42 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	//private static int TIME = 60 * 60; // 1시간
 	private RequestCache requestCache = new HttpSessionRequestCache();
 	private RedirectStrategy redirectStratgy = new DefaultRedirectStrategy();
-
-
-	
 	private String userId;
     private String defaultUrl;
+    
+    public LoginSuccessHandler(String defaultUrl) {
+    	setDefaultUrl(defaultUrl);
+    }
 
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
     		Authentication authentication) throws IOException, ServletException {
     	// TODO Auto-generated method stub
+    	
     	//request.getSession().setMaxInactiveInterval(TIME);
-    	clearAuthenticationAttributes(request); // 에러 세션을 지우는 메서드를 실헹한다.
+    	clearAuthenticationAttributes(request, response, authentication); // 에러 세션을 지우는 메서드를 실헹한다.
 
     }
     
-    protected void clearAuthenticationAttributes(HttpServletRequest request) {
+    protected void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response,
+    		Authentication authentication) throws IOException, ServletException {
+    	HttpSession session = request.getSession();
+    	if(session != null) {
+    		String redirectUrl = (String) session.getAttribute("prevPage");
+    		if(redirectUrl != null) {
+    			session.removeAttribute("prevPage");
+    			resultRedirectStrategy(request, response, authentication );
+    		} 
+    	} else {
+    		return;
+    	}
+    	
+    	/*
         HttpSession session = request.getSession(false); // 세션을 받아온다.
         if(session==null) return; // 세션이 null 즉, 세션에 에러가 없다면 그냥 return 된다.
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION); // WebAttributes.AUTHENTICATION_EXCEPTION 이름 값으로 정의된 세션을 지운다.
+    	*/
     }
 
     
