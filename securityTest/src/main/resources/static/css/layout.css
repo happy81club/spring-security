@@ -65,3 +65,10 @@ body {
   height: 500px;
   margin: 5px 5px 5px 5px;
 }
+.height{
+  margin-top: 5px;
+  height: 400px;
+}
+.outline0{
+	outline: 0px;
+}
