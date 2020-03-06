@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 
+<%@include file="/WEB-INF/view/include/header.jsp" %>
+<%@include file="/WEB-INF/view/include/nav.jsp" %>
+	
+<section>
 <div class="container">
 	<h3>input 태그</h3>
 	<form class="form-inline" role="form">
@@ -64,8 +68,12 @@
 	<p class="text-success">소싸움경기시행자의 면허를 받아 싸움소를 관리하고 조련시키는 자를 말한다.</p>
 	
 </div>
+</section>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>	
 <script>
 	$(document).ready(function(){
 	});
 </script>
-			
+
+<%@ include file="/WEB-INF/view/include/footer.jsp" %>

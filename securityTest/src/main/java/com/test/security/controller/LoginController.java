@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.util.WebUtils;
 
@@ -39,6 +40,8 @@ public class LoginController {
    
 	@RequestMapping(value="/login")
 	public String login(HttpServletRequest request, Model model) {
+		
+		System.out.println("로그인컨트롤러 >>>>>>>>> login");
 
 		HttpSession session = request.getSession();
 		
@@ -46,12 +49,9 @@ public class LoginController {
 		if(session != null)
 			session.invalidate();
 
-/*
-		if(session.getAttribute("loginVO") != null) {
-			return "redirect:/logout";
-		}
-*/		
-		
+		/*
+		 * if(session.getAttribute("loginVO") != null) { return "redirect:/logout"; }
+		 */
 		
 		return "login";
 	}

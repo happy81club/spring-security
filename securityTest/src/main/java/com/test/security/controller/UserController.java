@@ -32,8 +32,12 @@ public class UserController {
 		
 		String userId = principal.getName();
 		
+		System.out.println("로그인성공후 세션에 로그인정보 담기!!!!!!!!!!");
+		
 		UserInfo user = userService.getUserByUsername(userId);
 		model.addAttribute("loginVO", user);
+
+		System.out.println("UserInfo>>getUserName >> " + user.getUserName());
 		
 		return "redirect:/user/main";
 	}

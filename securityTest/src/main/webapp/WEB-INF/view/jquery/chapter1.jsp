@@ -8,17 +8,16 @@
 	<div class="modal-footer"><p> 제이쿼리 > chapter1 </p></div>
 		
 	<ul class="nav nav-tabs">
-		<li><a data-toggle="tab" href="#tab1">기본</a></li>
+		<li class="active"><a data-toggle="tab" href="#tab1">기본</a></li>
 		<li ><a data-toggle="tab" href="#tab2">테이블생성</a></li>
 		<li ><a data-toggle="tab" href="#tab3">배열과문자열1</a></li>
 		<li ><a data-toggle="tab" href="#tab4">배열과문자열2</a></li>
-		<li class="active"><a data-toggle="tab" href="#tab5">배열과문자열3</a></li>
-		<li><a data-toggle="tab" href="#tab6">부트스트랩</a></li>
+		<li ><a data-toggle="tab" href="#tab5">배열과문자열3</a></li>
 	</ul>
 
 	<div class="tab-content">
 	    <!-- TAB1 -->
-		<div id="tab1" class="tab-pane ">
+		<div id="tab1" class="tab-pane fade in active">
 			<%@ include file="/WEB-INF/view/jquery/chapter1_tab1.jsp" %>
 		</div><!-- id=tab1 -->		
 	    <!-- TAB2 -->
@@ -37,13 +36,8 @@
 		</div>
 		
 	    <!-- TAB5 -->
-		<div id="tab5" class="tab-pane fade in active">
+		<div id="tab5" class="tab-pane ">
 			<%@ include file="/WEB-INF/view/jquery/chapter1_tab5.jsp" %>
-		</div>
-
-	    <!-- TAB6 -->
-		<div id="tab6" class="tab-pane">
-			<%@ include file="/WEB-INF/view/jquery/chapter1_tab6.jsp" %>
 		</div>
 	</div>
 

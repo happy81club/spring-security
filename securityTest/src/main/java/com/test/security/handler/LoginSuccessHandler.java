@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
@@ -25,6 +24,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
     private String defaultUrl;
     
     public LoginSuccessHandler(String defaultUrl) {
+    	
+    	System.out.println("LoginSuccessHandler >>>>>>> defaultUrl : " + defaultUrl);
     	setDefaultUrl(defaultUrl);
     }
 
@@ -34,6 +35,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
     		Authentication authentication) throws IOException, ServletException {
     	// TODO Auto-generated method stub
     	
+    	System.out.println("로그인성공 핸들러!!!!!!!!!!!!!!!!!!!!!!!");
     	//request.getSession().setMaxInactiveInterval(TIME);
     	clearAuthenticationAttributes(request, response, authentication); // 에러 세션을 지우는 메서드를 실헹한다.
 
@@ -41,6 +43,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
     
     protected void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response,
     		Authentication authentication) throws IOException, ServletException {
+    	
+    	System.out.println("로그인성공 핸들러!!!!!!!!!!!!!!!!!!!!!!!");
+    	
     	HttpSession session = request.getSession();
     	if(session != null) {
     		String redirectUrl = (String) session.getAttribute("prevPage");

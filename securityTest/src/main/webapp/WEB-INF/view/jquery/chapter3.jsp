@@ -4,8 +4,12 @@
 <%@include file="/WEB-INF/view/include/nav.jsp" %>
 	
 <section>
-	<h1>chapter3</h1>
+<div class="container">
+	<div class="modal-footer"><p> 제이쿼리 > chapter3 </p></div>
+		
+		
 
+</div>
 </section>
 
 <script type="text/javascript" src="/js/bootstrap.js"></script>	

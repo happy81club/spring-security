@@ -22,7 +22,9 @@
 		  <a href="<c:url value='/jquery/chapter1'/>" class="list-group-item">chapter1</a>
 		  <a href="<c:url value='/jquery/chapter2'/>" class="list-group-item">chapter2</a>
 		  <a href="<c:url value='/jquery/chapter3'/>" class="list-group-item">chapter3</a>
+		  <a href="<c:url value='/bootstrap'/>" class="list-group-item">부트스트랩</a>
 	</div>
+	
 
 	<!-- 로그인이 필요한 폴더 -->
 	<%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
